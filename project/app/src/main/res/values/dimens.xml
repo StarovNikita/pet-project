@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="recycler_view_height">0dp</dimen>
     <dimen name="card_view_layout_margin">10dp</dimen>
-    <dimen name="card_view_constraint_paddingBotton">10dp</dimen>
+    <dimen name="card_view_constraint_padding">10dp</dimen>
     <dimen name="image_size">100dp</dimen>
     <dimen name="image_margin">16dp</dimen>
     <dimen name="text_view_layout_width">0dp</dimen>
@@ -12,4 +11,5 @@
     <dimen name="text_view_marginEnd">8dp</dimen>
     <dimen name="text_view_marginLeft">0dp</dimen>
     <dimen name="text_view_marginStart">0dp</dimen>
+    <dimen name="recycler_view_size">0dp</dimen>
 </resources>

@@ -8,6 +8,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.pet_project.Constants
 import com.example.pet_project.R
 import com.example.pet_project.model.Result
 
@@ -23,7 +24,7 @@ class MovieAdapter(private val movieList: List<Result>, private val context: Con
             holder.tvTitle.text = title
             holder.tvOverview.text = overview
             holder.tvReleaseDate.text = releaseDate
-            Glide.with(context).load("https://image.tmdb.org/t/p/w500/${posterPath}")
+            Glide.with(context).load("${Constants.IMAGE_URL}${posterPath}")
                 .into(holder.ivMovie)
         }
     }

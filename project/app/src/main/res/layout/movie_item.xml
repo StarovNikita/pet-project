@@ -8,7 +8,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingBottom="@dimen/card_view_constraint_paddingBotton">
+        android:paddingBottom="@dimen/card_view_constraint_padding">
 
         <ImageView
             android:id="@+id/ivMovie"

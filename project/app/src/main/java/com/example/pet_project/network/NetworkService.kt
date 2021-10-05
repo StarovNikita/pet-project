@@ -5,8 +5,11 @@ import io.reactivex.rxjava3.core.Observable
 import retrofit2.http.GET
 import retrofit2.http.Query
 
-interface NetworkInterface {
+interface NetworkService {
 
     @GET("discover/movie")
     fun getMovies(@Query("api_key") api_key: String): Observable<MovieResponse>
+
+    @GET("search/movie")
+    fun getMoviesBasedOnQuery(@Query("api_key") api_key: String,@Query("query") query: String) : Observable<MovieResponse>
 }
