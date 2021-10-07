@@ -1,6 +1,6 @@
 package com.example.pet_project.network
 
-import com.example.pet_project.model.HeroResponse
+import com.example.pet_project.model.hero.HeroResponse
 import io.reactivex.rxjava3.core.Observable
 import retrofit2.http.GET
 import retrofit2.http.Path

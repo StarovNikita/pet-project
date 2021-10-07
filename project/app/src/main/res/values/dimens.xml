@@ -5,7 +5,9 @@
     <dimen name="card_radius">12dp</dimen>
     <dimen name="card_elevation">3dp</dimen>
     <dimen name="card_padding">4dp</dimen>
-    <dimen name="image_width">145dp</dimen>
-    <dimen name="image_height">125dp</dimen>
+    <dimen name="image_start_width">145dp</dimen>
+    <dimen name="image_start_height">125dp</dimen>
+    <dimen name="image_end_width">290dp</dimen>
+    <dimen name="image_end_height">250dp</dimen>
     <dimen name="layout_margin">5dp</dimen>
 </resources>

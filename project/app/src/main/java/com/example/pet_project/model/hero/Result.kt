@@ -1,5 +1,7 @@
-package com.example.pet_project.model
+package com.example.pet_project.model.hero
 
+import com.example.pet_project.model.hero.HeroAppearance
+import com.example.pet_project.model.hero.HeroImage
 import com.google.gson.annotations.SerializedName
 
 data class Result(

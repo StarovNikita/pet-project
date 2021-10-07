@@ -1,7 +1,7 @@
 package com.example.pet_project.ui.main
 
 import androidx.appcompat.widget.SearchView
-import com.example.pet_project.model.HeroResponse
+import com.example.pet_project.model.hero.HeroResponse
 import com.example.pet_project.network.Service
 import io.reactivex.rxjava3.core.Observable
 import io.reactivex.rxjava3.subjects.PublishSubject

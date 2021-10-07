@@ -8,7 +8,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.pet_project.databinding.HeroItemBinding
-import com.example.pet_project.model.Result
+import com.example.pet_project.model.hero.Result
 
 class HeroAdapter(private val heroList: List<Result>, private val context: Context) :
     RecyclerView.Adapter<HeroAdapter.HeroHolder>() {

@@ -1,6 +1,6 @@
 package com.example.pet_project.ui.main
 
-import com.example.pet_project.model.HeroResponse
+import com.example.pet_project.model.hero.HeroResponse
 
 interface MainViewInterface {
 

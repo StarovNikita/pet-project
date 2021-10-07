@@ -6,7 +6,7 @@ import com.example.pet_project.BaseApp
 import com.example.pet_project.R
 import com.example.pet_project.adapters.HeroAdapter
 import com.example.pet_project.databinding.ActivityMainBinding
-import com.example.pet_project.model.HeroResponse
+import com.example.pet_project.model.hero.HeroResponse
 import com.example.pet_project.network.Service
 import javax.inject.Inject
 
