@@ -4,9 +4,9 @@ import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.pet_project.BaseApp
 import com.example.pet_project.R
-import com.example.pet_project.adapters.MovieAdapter
+import com.example.pet_project.adapters.HeroAdapter
 import com.example.pet_project.databinding.ActivityMainBinding
-import com.example.pet_project.model.MovieResponse
+import com.example.pet_project.model.HeroResponse
 import com.example.pet_project.network.Service
 import javax.inject.Inject
 
@@ -14,8 +14,9 @@ import javax.inject.Inject
 class MainActivity : BaseApp(), MainViewInterface {
 
     private lateinit var binding: ActivityMainBinding
-    private lateinit var adapter: MovieAdapter
+    private lateinit var adapter: HeroAdapter
     private lateinit var mainPresenter: MainPresenter
+
     @Inject
     lateinit var service: Service
 
@@ -27,17 +28,17 @@ class MainActivity : BaseApp(), MainViewInterface {
     }
 
     private fun initAllFields() {
-        mainPresenter = MainPresenter(service,this)
+        mainPresenter = MainPresenter(service, this)
         mainPresenter.getMovieList()
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        binding.moviesList.setHasFixedSize(true)
-        binding.moviesList.layoutManager = LinearLayoutManager(this)
+        mainPresenter.getMovieListBasedOnQuery(binding.searchView)
+        binding.heroList.setHasFixedSize(true)
+        binding.heroList.layoutManager = LinearLayoutManager(this)
     }
 
-    override fun showMovieList(movieResponse: MovieResponse) {
-        adapter = MovieAdapter(movieResponse.results,applicationContext)
-        binding.moviesList.adapter = adapter
+    override fun showMovieList(heroResponse: HeroResponse) {
+        adapter = HeroAdapter(heroResponse.results, applicationContext)
+        binding.heroList.adapter = adapter
     }
-
 }

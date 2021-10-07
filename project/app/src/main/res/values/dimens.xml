@@ -1,15 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="card_view_layout_margin">10dp</dimen>
-    <dimen name="card_view_constraint_padding">10dp</dimen>
-    <dimen name="image_size">100dp</dimen>
-    <dimen name="image_margin">16dp</dimen>
-    <dimen name="text_view_layout_width">0dp</dimen>
-    <dimen name="text_view_textSize">20sp</dimen>
-    <dimen name="text_view_marginTop">8dp</dimen>
-    <dimen name="text_view_marginRight">8dp</dimen>
-    <dimen name="text_view_marginEnd">8dp</dimen>
-    <dimen name="text_view_marginLeft">0dp</dimen>
-    <dimen name="text_view_marginStart">0dp</dimen>
     <dimen name="recycler_view_size">0dp</dimen>
+    <dimen name="card_margin">5dp</dimen>
+    <dimen name="card_radius">12dp</dimen>
+    <dimen name="card_elevation">3dp</dimen>
+    <dimen name="card_padding">4dp</dimen>
+    <dimen name="image_width">145dp</dimen>
+    <dimen name="image_height">125dp</dimen>
+    <dimen name="layout_margin">5dp</dimen>
 </resources>

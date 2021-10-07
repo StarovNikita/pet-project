@@ -1,15 +1,18 @@
 package com.example.pet_project.network
 
-import com.example.pet_project.model.MovieResponse
+import com.example.pet_project.model.HeroResponse
 import io.reactivex.rxjava3.core.Observable
 import retrofit2.http.GET
-import retrofit2.http.Query
+import retrofit2.http.Path
 
 interface NetworkService {
 
-    @GET("discover/movie")
-    fun getMovies(@Query("api_key") api_key: String): Observable<MovieResponse>
+    @GET("api/{api_key}/search/a")
+    fun getResult(@Path("api_key") api_key: String): Observable<HeroResponse>
 
-    @GET("search/movie")
-    fun getMoviesBasedOnQuery(@Query("api_key") api_key: String,@Query("query") query: String) : Observable<MovieResponse>
+    @GET("api/{api_key}/search/{name}")
+    fun getResultBasedOnName(
+        @Path("api_key") api_key: String,
+        @Path("name") name: String
+    ): Observable<HeroResponse>
 }

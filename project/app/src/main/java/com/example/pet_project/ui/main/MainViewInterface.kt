@@ -1,8 +1,8 @@
 package com.example.pet_project.ui.main
 
-import com.example.pet_project.model.MovieResponse
+import com.example.pet_project.model.HeroResponse
 
 interface MainViewInterface {
 
-    fun showMovieList(movieResponse : MovieResponse)
+    fun showMovieList(heroResponse: HeroResponse)
 }
