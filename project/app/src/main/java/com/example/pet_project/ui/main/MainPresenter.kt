@@ -9,19 +9,19 @@ import javax.inject.Inject
 
 class MainPresenter @Inject constructor(private val service: Service, val view: MainViewInterface) {
 
-    fun getMovieList() {
-        service.getHeroList(object : Service.GetMovieListCallback {
+    fun getHeroList() {
+        service.getHeroList(object : Service.GetHeroListCallback {
             override fun onSuccess(heroListResponse: HeroResponse?) {
-                heroListResponse?.let { view.showMovieList(it) }
+                heroListResponse?.let { view.showHeroList(it) }
             }
         })
     }
 
-    fun getMovieListBasedOnQuery(searchView: SearchView) {
-        service.getHeroListBasedOnName(object : Service.GetMovieListCallback {
+    fun getHeroListBasedOnName(searchView: SearchView) {
+        service.getHeroListBasedOnName(object : Service.GetHeroListCallback {
             override fun onSuccess(heroListResponse: HeroResponse?) {
                 heroListResponse?.let {
-                    view.showMovieList(it)
+                    view.showHeroList(it)
                 }
             }
         }, fromView(searchView))

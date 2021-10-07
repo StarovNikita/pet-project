@@ -29,15 +29,15 @@ class MainActivity : BaseApp(), MainViewInterface {
 
     private fun initAllFields() {
         mainPresenter = MainPresenter(service, this)
-        mainPresenter.getMovieList()
+        mainPresenter.getHeroList()
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        mainPresenter.getMovieListBasedOnQuery(binding.searchView)
+        mainPresenter.getHeroListBasedOnName(binding.searchView)
         binding.heroList.setHasFixedSize(true)
         binding.heroList.layoutManager = LinearLayoutManager(this)
     }
 
-    override fun showMovieList(heroResponse: HeroResponse) {
+    override fun showHeroList(heroResponse: HeroResponse) {
         adapter = HeroAdapter(heroResponse.results, applicationContext)
         binding.heroList.adapter = adapter
     }

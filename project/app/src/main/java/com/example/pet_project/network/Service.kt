@@ -12,7 +12,7 @@ import javax.inject.Inject
 
 class Service @Inject constructor(private val networkService: NetworkService) {
 
-    fun getHeroList(callback: GetMovieListCallback) {
+    fun getHeroList(callback: GetHeroListCallback) {
         networkService.getResult(Constants.API_KEY,)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
@@ -22,7 +22,7 @@ class Service @Inject constructor(private val networkService: NetworkService) {
                 { throwable -> Log.e("showErrorMessage", "showErrorMessage $throwable") })
     }
 
-    fun getHeroListBasedOnName(callback: GetMovieListCallback, subject: Observable<String>) {
+    fun getHeroListBasedOnName(callback: GetHeroListCallback, subject: Observable<String>) {
         subject
             .filter { it.isNotEmpty() }
             .debounce(300, TimeUnit.MILLISECONDS)
@@ -37,7 +37,7 @@ class Service @Inject constructor(private val networkService: NetworkService) {
                 { throwable -> Log.e("showErrorMessage", "showErrorMessage $throwable") })
     }
 
-    interface GetMovieListCallback {
+    interface GetHeroListCallback {
         fun onSuccess(heroListResponse: HeroResponse?)
     }
 }
