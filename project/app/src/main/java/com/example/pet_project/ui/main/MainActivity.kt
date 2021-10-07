@@ -30,6 +30,7 @@ class MainActivity : BaseApp(), MainViewInterface {
         mainPresenter = MainPresenter(service, this)
         mainPresenter.getHeroList()
         binding = FragmentMainListBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         mainPresenter.getHeroListBasedOnName(binding.searchView)
         binding.heroList.setHasFixedSize(true)
         binding.heroList.layoutManager = LinearLayoutManager(applicationContext)
