@@ -1,7 +1,6 @@
 package com.example.pet_project.ui.main
 
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.pet_project.BaseApp
 import com.example.pet_project.R
@@ -25,7 +24,6 @@ class MainActivity : BaseApp(), MainViewInterface {
         setContentView(R.layout.activity_main)
         appComponent.inject(this)
         initAllFields()
-
     }
 
     private fun initAllFields() {
@@ -37,7 +35,7 @@ class MainActivity : BaseApp(), MainViewInterface {
         binding.moviesList.layoutManager = LinearLayoutManager(this)
     }
 
-    override fun getMovieListSuccess(movieResponse: MovieResponse) {
+    override fun showMovieList(movieResponse: MovieResponse) {
         adapter = MovieAdapter(movieResponse.results,applicationContext)
         binding.moviesList.adapter = adapter
     }

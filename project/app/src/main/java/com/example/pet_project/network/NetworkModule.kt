@@ -12,7 +12,6 @@ import javax.inject.Singleton
 @Module
 class NetworkModule {
 
-    companion object {
         @Provides
         @Singleton
         fun provideRetrofit(): Retrofit =
@@ -27,5 +26,4 @@ class NetworkModule {
         @Singleton
         fun provideNetworkService(retrofit: Retrofit) : NetworkService =
             retrofit.create(NetworkService::class.java)
-    }
 }
