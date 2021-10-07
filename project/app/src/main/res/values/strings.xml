@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Pet-Project</string>
+    <string name="favorite_button_text">Favorite</string>
 </resources>

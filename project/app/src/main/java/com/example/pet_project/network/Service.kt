@@ -13,7 +13,7 @@ import javax.inject.Inject
 class Service @Inject constructor(private val networkService: NetworkService) {
 
     fun getHeroList(callback: GetHeroListCallback) {
-        networkService.getResult(Constants.API_KEY,)
+        networkService.getResult(Constants.API_KEY)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({

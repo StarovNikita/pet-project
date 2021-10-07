@@ -10,4 +10,5 @@
     <dimen name="image_end_width">290dp</dimen>
     <dimen name="image_end_height">250dp</dimen>
     <dimen name="layout_margin">5dp</dimen>
+    <dimen name="selected_hero_name_text_size">30sp</dimen>
 </resources>
