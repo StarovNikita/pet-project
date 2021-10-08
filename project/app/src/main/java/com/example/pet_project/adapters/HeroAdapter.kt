@@ -1,6 +1,7 @@
 package com.example.pet_project.adapters
 
 import android.content.Context
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.ImageView
@@ -12,6 +13,7 @@ import com.example.pet_project.R
 import com.example.pet_project.databinding.HeroItemBinding
 import com.example.pet_project.model.hero.Result
 import com.example.pet_project.ui.main.HeroFragment
+import com.example.pet_project.ui.main.MainListFragment
 import com.example.pet_project.utils.navigate
 
 class HeroAdapter(private val heroList: List<Result>, private val context: Context?) :
@@ -32,7 +34,8 @@ class HeroAdapter(private val heroList: List<Result>, private val context: Conte
             }
         }
         holder.heroCard.setOnClickListener {
-            val fragment = HeroFragment(heroList[position])
+            val fragment = MainListFragment()
+
             fragment.navigate(R.id.action_initialFragment_to_detailsFragment)
         }
     }

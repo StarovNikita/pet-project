@@ -10,8 +10,9 @@ import com.example.pet_project.databinding.FragmentHeroBinding
 import com.example.pet_project.model.hero.Result
 import com.bumptech.glide.Glide
 
-class HeroFragment(private val selectedHero: Result) : Fragment(R.layout.fragment_hero) {
+class HeroFragment : Fragment(R.layout.fragment_hero) {
 
+    private lateinit var selectedHero: Result
     private lateinit var binding: FragmentHeroBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {

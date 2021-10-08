@@ -7,7 +7,7 @@ import com.example.pet_project.R
 import com.example.pet_project.adapters.HeroAdapter
 import com.example.pet_project.databinding.FragmentMainListBinding
 import com.example.pet_project.model.hero.HeroResponse
-import com.example.pet_project.network.Service
+import com.example.pet_project.network.RemoteRepositoryImpl
 import javax.inject.Inject
 
 
@@ -17,7 +17,7 @@ class MainActivity : BaseApp(), MainViewInterface {
     private lateinit var adapter: HeroAdapter
     private lateinit var mainPresenter: MainPresenter
     @Inject
-    lateinit var service: Service
+    lateinit var remoteRepositoryImpl: RemoteRepositoryImpl
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,7 +27,7 @@ class MainActivity : BaseApp(), MainViewInterface {
     }
 
     private fun initAllFields() {
-        mainPresenter = MainPresenter(service, this)
+        mainPresenter = MainPresenter(remoteRepositoryImpl, this)
         mainPresenter.getHeroList()
         binding = FragmentMainListBinding.inflate(layoutInflater)
         setContentView(binding.root)

@@ -2,15 +2,15 @@ package com.example.pet_project.ui.main
 
 import androidx.appcompat.widget.SearchView
 import com.example.pet_project.model.hero.HeroResponse
-import com.example.pet_project.network.Service
+import com.example.pet_project.network.RemoteRepositoryImpl
 import io.reactivex.rxjava3.core.Observable
 import io.reactivex.rxjava3.subjects.PublishSubject
 import javax.inject.Inject
 
-class MainPresenter @Inject constructor(private val service: Service, val view: MainViewInterface) {
+class MainPresenter @Inject constructor(private val remoteRepositoryImpl: RemoteRepositoryImpl, val view: MainViewInterface) {
 
     fun getHeroList() {
-        service.getHeroList(object : Service.GetHeroListCallback {
+        remoteRepositoryImpl.getHeroList(object : RemoteRepositoryImpl.GetHeroListCallback {
             override fun onSuccess(heroListResponse: HeroResponse?) {
                 heroListResponse?.let { view.showHeroList(it) }
             }
@@ -18,7 +18,7 @@ class MainPresenter @Inject constructor(private val service: Service, val view: 
     }
 
     fun getHeroListBasedOnName(searchView: SearchView) {
-        service.getHeroListBasedOnName(object : Service.GetHeroListCallback {
+        remoteRepositoryImpl.getHeroListBasedOnName(object : RemoteRepositoryImpl.GetHeroListCallback {
             override fun onSuccess(heroListResponse: HeroResponse?) {
                 heroListResponse?.let {
                     view.showHeroList(it)
