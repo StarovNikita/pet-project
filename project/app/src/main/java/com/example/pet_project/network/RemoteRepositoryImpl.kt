@@ -10,9 +10,9 @@ import io.reactivex.rxjava3.schedulers.Schedulers
 import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
-class Service @Inject constructor(private val networkService: NetworkService) {
+class RemoteRepositoryImpl @Inject constructor(private val networkService: NetworkService) : RemoteRepository {
 
-    fun getHeroList(callback: GetHeroListCallback) {
+    override fun getHeroList(callback: GetHeroListCallback) {
         networkService.getResult(Constants.API_KEY)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
@@ -22,7 +22,7 @@ class Service @Inject constructor(private val networkService: NetworkService) {
                 { throwable -> Log.e("showErrorMessage", "showErrorMessage $throwable") })
     }
 
-    fun getHeroListBasedOnName(callback: GetHeroListCallback, subject: Observable<String>) {
+    override fun getHeroListBasedOnName(callback: GetHeroListCallback, subject: Observable<String>) {
         subject
             .filter { it.isNotEmpty() }
             .debounce(300, TimeUnit.MILLISECONDS)
