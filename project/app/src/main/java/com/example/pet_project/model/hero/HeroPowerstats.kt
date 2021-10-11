@@ -1,18 +1,21 @@
 package com.example.pet_project.model.hero
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.parcelize.Parcelize
 
+@Parcelize
 data class HeroPowerstats(
     @SerializedName("combat")
-    val combat: String,
+    var combat: String,
     @SerializedName("durability")
-    val durability: String,
+    var durability: String,
     @SerializedName("intelligence")
-    val intelligence: String,
+    var intelligence: String,
     @SerializedName("power")
-    val power: String,
+    var power: String,
     @SerializedName("speed")
-    val speed: String,
+    var speed: String,
     @SerializedName("strength")
-    val strength: String
-)
+    var strength: String
+) : Parcelable

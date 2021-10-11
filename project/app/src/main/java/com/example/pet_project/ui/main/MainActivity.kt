@@ -7,9 +7,8 @@ import com.example.pet_project.R
 import com.example.pet_project.adapters.HeroAdapter
 import com.example.pet_project.databinding.FragmentMainListBinding
 import com.example.pet_project.model.hero.HeroResponse
-import com.example.pet_project.network.RemoteRepositoryImpl
+import com.example.pet_project.network.Interactor
 import javax.inject.Inject
-
 
 class MainActivity : BaseApp(), MainViewInterface {
 
@@ -17,7 +16,7 @@ class MainActivity : BaseApp(), MainViewInterface {
     private lateinit var adapter: HeroAdapter
     private lateinit var mainPresenter: MainPresenter
     @Inject
-    lateinit var remoteRepositoryImpl: RemoteRepositoryImpl
+    lateinit var interactor: Interactor
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,17 +26,19 @@ class MainActivity : BaseApp(), MainViewInterface {
     }
 
     private fun initAllFields() {
-        mainPresenter = MainPresenter(remoteRepositoryImpl, this)
+        mainPresenter = MainPresenter(interactor,this)
         mainPresenter.getHeroList()
         binding = FragmentMainListBinding.inflate(layoutInflater)
         setContentView(binding.root)
         mainPresenter.getHeroListBasedOnName(binding.searchView)
         binding.heroList.setHasFixedSize(true)
         binding.heroList.layoutManager = LinearLayoutManager(applicationContext)
+        adapter = HeroAdapter(emptyList(), applicationContext, mainPresenter,this)
+        binding.heroList.adapter = adapter
     }
 
     override fun showHeroList(heroResponse: HeroResponse) {
-        adapter = HeroAdapter(heroResponse.results, applicationContext)
-        binding.heroList.adapter = adapter
+        adapter.update(heroResponse.results)
+        adapter.notifyDataSetChanged()
     }
 }

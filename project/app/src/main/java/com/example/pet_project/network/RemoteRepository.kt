@@ -1,10 +1,11 @@
 package com.example.pet_project.network
 
+import com.example.pet_project.model.hero.HeroResponse
 import io.reactivex.rxjava3.core.Observable
 
 interface RemoteRepository {
 
-    fun getHeroList(callback: RemoteRepositoryImpl.GetHeroListCallback)
+    fun getHeroList() : Observable<HeroResponse>
 
-    fun getHeroListBasedOnName(callback: RemoteRepositoryImpl.GetHeroListCallback, subject: Observable<String>)
+    fun getHeroListBasedOnName(query : String): Observable<HeroResponse>
 }

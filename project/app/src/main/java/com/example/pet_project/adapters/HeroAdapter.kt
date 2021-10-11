@@ -1,7 +1,7 @@
 package com.example.pet_project.adapters
 
 import android.content.Context
-import android.os.Bundle
+
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.ImageView
@@ -9,14 +9,17 @@ import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.pet_project.R
 import com.example.pet_project.databinding.HeroItemBinding
 import com.example.pet_project.model.hero.Result
-import com.example.pet_project.ui.main.HeroFragment
-import com.example.pet_project.ui.main.MainListFragment
-import com.example.pet_project.utils.navigate
+import com.example.pet_project.ui.main.MainActivity
+import com.example.pet_project.ui.main.MainPresenter
 
-class HeroAdapter(private val heroList: List<Result>, private val context: Context?) :
+class HeroAdapter(
+    private var heroList: List<Result>,
+    private val context: Context?,
+    private val mainPresenter: MainPresenter,
+    private val activity: MainActivity
+) :
     RecyclerView.Adapter<HeroAdapter.HeroHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HeroHolder = HeroHolder(
@@ -34,19 +37,21 @@ class HeroAdapter(private val heroList: List<Result>, private val context: Conte
             }
         }
         holder.heroCard.setOnClickListener {
-            val fragment = MainListFragment()
-
-            fragment.navigate(R.id.action_initialFragment_to_detailsFragment)
+            mainPresenter.heroCardClicked(heroList[position],activity)
         }
     }
 
     override fun getItemCount(): Int = heroList.size
+
+    fun update(newHeroList: List<Result>) {
+        heroList = newHeroList
+    }
 
     class HeroHolder(binding: HeroItemBinding) : RecyclerView.ViewHolder(binding.root) {
         val heroName: TextView = binding.heroName
         val heroGender: TextView = binding.heroGender
         val heroRace: TextView = binding.heroRace
         val heroImage: ImageView = binding.heroImage
-        val heroCard : CardView = binding.heroCard
+        val heroCard: CardView = binding.heroCard
     }
 }

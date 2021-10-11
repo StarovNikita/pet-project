@@ -2,18 +2,19 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/initialFragment">
+    app:startDestination="@id/MainListFragment">
 
     <fragment
-        android:id="@+id/initialFragment"
+        android:id="@+id/MainListFragment"
         android:name="com.example.pet_project.ui.main.MainListFragment"
-        android:label="InitialFragment">
+        android:label="MainListFragment">
+
         <action
-            android:id="@+id/action_initialFragment_to_detailsFragment"
-            app:destination="@id/detailsFragment" />
+            android:id="@+id/action_MainListFragment_to_HeroFragment"
+            app:destination="@id/HeroFragment" />
     </fragment>
     <fragment
-        android:id="@+id/detailsFragment"
+        android:id="@+id/HeroFragment"
         android:name="com.example.pet_project.ui.main.HeroFragment"
-        android:label="DetailsFragment" />
+        android:label="HeroFragment" />
 </navigation>

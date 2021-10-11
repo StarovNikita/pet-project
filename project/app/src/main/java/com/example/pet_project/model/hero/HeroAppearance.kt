@@ -1,10 +1,13 @@
 package com.example.pet_project.model.hero
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.parcelize.Parcelize
 
+@Parcelize
 data class HeroAppearance(
     @SerializedName("gender")
-    val gender: String,
+    var gender: String,
     @SerializedName("race")
-    val race: String
-)
+    var race: String
+) : Parcelable
