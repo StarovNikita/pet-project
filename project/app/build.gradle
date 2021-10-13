@@ -73,11 +73,9 @@ dependencies {
 
     //Moxy
     implementation 'com.arello-mobile:moxy:1.5.5'
-    implementation 'com.arello-mobile:moxy-android:1.5.5'
     implementation 'com.arello-mobile:moxy-app-compat:1.5.5'
     implementation 'com.android.support:appcompat-v7:30.0.0'
-    annotationProcessor 'tech.schoolhelper:moxy-x-compiler:1.7.0'
-    annotationProcessor 'com.arello-mobile:moxy-compiler:1.5.5'
+    kapt 'com.arello-mobile:moxy-compiler:1.5.5'
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'

@@ -8,12 +8,15 @@ import com.example.pet_project.R
 import com.example.pet_project.adapters.HeroAdapter
 import com.example.pet_project.databinding.FragmentMainListBinding
 import com.example.pet_project.di.component.DaggerActivityComponent
+import com.example.pet_project.di.module.ActivityModule
 import com.example.pet_project.model.hero.HeroResponse
+import javax.inject.Inject
 
 class MainActivity : AppCompatActivity(), MainViewInterface {
 
     private lateinit var binding: FragmentMainListBinding
     private lateinit var adapter: HeroAdapter
+    @Inject
     @InjectPresenter
     lateinit var mainPresenter: MainPresenter
 
@@ -41,7 +44,7 @@ class MainActivity : AppCompatActivity(), MainViewInterface {
     }
 
     private fun injectDependency() {
-        val activityComponent = DaggerActivityComponent.builder().build()
+        val activityComponent = DaggerActivityComponent.builder().activityModule(ActivityModule(this)).build()
         activityComponent.inject(this)
     }
 }

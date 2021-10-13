@@ -14,11 +14,8 @@ import io.reactivex.rxjava3.subjects.PublishSubject
 import javax.inject.Inject
 
 @InjectViewState
-class MainPresenter  :
+class MainPresenter @Inject constructor(private var interactor: Interactor) :
     MvpPresenter<MainViewInterface>() {
-
-    @Inject
-    lateinit var interactor : Interactor
 
     fun getHeroList() {
         interactor.getHeroList()
