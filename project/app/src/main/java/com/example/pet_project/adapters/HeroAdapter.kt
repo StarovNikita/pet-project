@@ -4,6 +4,7 @@ import android.content.Context
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.AdapterView
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.cardview.widget.CardView
@@ -11,16 +12,16 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.pet_project.databinding.HeroItemBinding
 import com.example.pet_project.model.hero.Result
+import com.example.pet_project.ui.main.ClickListener
 import com.example.pet_project.ui.main.MainActivity
 import com.example.pet_project.ui.main.MainPresenter
 
 class HeroAdapter(
-    private var heroList: List<Result>,
-    private val context: Context?,
-    private val mainPresenter: MainPresenter,
-    private val activity: MainActivity
+    private val itemClicked: ClickListener
 ) :
     RecyclerView.Adapter<HeroAdapter.HeroHolder>() {
+
+    private var heroList: List<Result> = emptyList()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HeroHolder = HeroHolder(
         HeroItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -31,13 +32,13 @@ class HeroAdapter(
             holder.heroName.text = name
             holder.heroGender.text = appearance.gender
             holder.heroRace.text = appearance.race
-            context?.let {
+            holder.heroCard.context?.let {
                 Glide.with(it).load(image.url)
                     .into(holder.heroImage)
             }
         }
         holder.heroCard.setOnClickListener {
-            mainPresenter.heroCardClicked(heroList[position],activity)
+            itemClicked.onItemClick(heroList[position])
         }
     }
 
