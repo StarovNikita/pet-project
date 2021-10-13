@@ -1,15 +1,27 @@
 package com.example.pet_project
 
-import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
+import android.app.Application
+import com.example.pet_project.di.component.ActivityComponent
+import com.example.pet_project.di.component.ApplicationComponent
+import com.example.pet_project.di.component.DaggerApplicationComponent
+import com.example.pet_project.di.module.ApplicationModule
 
+class BaseApp : Application() {
 
-open class BaseApp : AppCompatActivity() {
+    lateinit var component: ApplicationComponent
 
-    lateinit var appComponent: AppComponent
+    override fun onCreate() {
+        super.onCreate()
+        instance = this
+        setup()
+    }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        appComponent = DaggerAppComponent.create()
+    private fun setup() {
+        component = DaggerApplicationComponent.builder().build()
+        component.inject(this)
+    }
+
+    companion object{
+        lateinit var  instance: BaseApp private set
     }
 }

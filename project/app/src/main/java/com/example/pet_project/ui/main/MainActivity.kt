@@ -1,27 +1,32 @@
 package com.example.pet_project.ui.main
 
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.arellomobile.mvp.presenter.InjectPresenter
-import com.example.pet_project.BaseApp
 import com.example.pet_project.R
 import com.example.pet_project.adapters.HeroAdapter
 import com.example.pet_project.databinding.FragmentMainListBinding
+import com.example.pet_project.di.component.DaggerActivityComponent
 import com.example.pet_project.model.hero.HeroResponse
 
-class MainActivity : BaseApp(), MainViewInterface {
+class MainActivity : AppCompatActivity(), MainViewInterface {
 
     private lateinit var binding: FragmentMainListBinding
     private lateinit var adapter: HeroAdapter
     @InjectPresenter
     lateinit var mainPresenter: MainPresenter
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        appComponent.inject(this)
+        injectDependency()
         initAllFields()
+    }
+
+    override fun showHeroList(heroResponse: HeroResponse) {
+        adapter.update(heroResponse.results)
+        adapter.notifyDataSetChanged()
     }
 
     private fun initAllFields() {
@@ -35,8 +40,8 @@ class MainActivity : BaseApp(), MainViewInterface {
         binding.heroList.adapter = adapter
     }
 
-    override fun showHeroList(heroResponse: HeroResponse) {
-        adapter.update(heroResponse.results)
-        adapter.notifyDataSetChanged()
+    private fun injectDependency() {
+        val activityComponent = DaggerActivityComponent.builder().build()
+        activityComponent.inject(this)
     }
 }
