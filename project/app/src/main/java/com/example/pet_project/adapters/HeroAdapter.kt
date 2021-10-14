@@ -1,10 +1,7 @@
 package com.example.pet_project.adapters
 
-import android.content.Context
-
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.AdapterView
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.cardview.widget.CardView
@@ -13,8 +10,6 @@ import com.bumptech.glide.Glide
 import com.example.pet_project.databinding.HeroItemBinding
 import com.example.pet_project.model.hero.Result
 import com.example.pet_project.ui.main.ClickListener
-import com.example.pet_project.ui.main.MainActivity
-import com.example.pet_project.ui.main.MainPresenter
 
 class HeroAdapter(
     private val itemClicked: ClickListener
@@ -30,10 +25,10 @@ class HeroAdapter(
     override fun onBindViewHolder(holder: HeroHolder, position: Int) {
         with(heroList[position]) {
             holder.heroName.text = name
-            holder.heroGender.text = appearance.gender
-            holder.heroRace.text = appearance.race
+            holder.heroGender.text = appearance?.gender
+            holder.heroRace.text = appearance?.race
             holder.heroCard.context?.let {
-                Glide.with(it).load(image.url)
+                Glide.with(it).load(image?.url)
                     .into(holder.heroImage)
             }
         }

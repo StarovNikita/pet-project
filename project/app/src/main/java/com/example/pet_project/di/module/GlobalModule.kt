@@ -11,6 +11,4 @@ class GlobalModule {
     @Provides
     @Singleton
     fun providePresenter() = MainPresenter()
-
-
 }

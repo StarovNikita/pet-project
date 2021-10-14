@@ -1,20 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/MainListFragment">
+    app:startDestination="@id/mainListFragment">
 
     <fragment
-        android:id="@+id/MainListFragment"
+        android:id="@+id/mainListFragment"
         android:name="com.example.pet_project.ui.main.MainListFragment"
-        android:label="MainListFragment">
-
+        android:label="fragment_main_list"
+        tools:layout="@layout/fragment_main_list" >
         <action
-            android:id="@+id/action_MainListFragment_to_HeroFragment"
-            app:destination="@id/HeroFragment" />
+            android:id="@+id/action_mainListFragment_to_heroFragment"
+            app:destination="@id/heroFragment" />
     </fragment>
     <fragment
-        android:id="@+id/HeroFragment"
+        android:id="@+id/heroFragment"
         android:name="com.example.pet_project.ui.main.HeroFragment"
-        android:label="HeroFragment" />
+        android:label="HeroFragment" >
+        <argument
+            android:name="selectedHero"
+            app:argType="com.example.pet_project.model.hero.Result" />
+    </fragment>
 </navigation>

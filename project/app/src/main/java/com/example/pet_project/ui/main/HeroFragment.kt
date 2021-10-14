@@ -1,43 +1,43 @@
 package com.example.pet_project.ui.main
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.pet_project.R
+import androidx.navigation.fragment.navArgs
+import com.arellomobile.mvp.MvpAppCompatFragment
 import com.example.pet_project.databinding.FragmentHeroBinding
 import com.example.pet_project.model.hero.Result
 import com.bumptech.glide.Glide
 
-class HeroFragment : Fragment(R.layout.fragment_hero) {
+class HeroFragment : MvpAppCompatFragment() {
 
     private lateinit var binding: FragmentHeroBinding
-    private val selectedHero: Result? = arguments?.getParcelable("selectedHero")
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        binding = FragmentHeroBinding.inflate(layoutInflater)
-        setViewContent()
-    }
+    private lateinit var selectedHero : Result
+    private val args : HeroFragmentArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? = inflater.inflate(R.layout.fragment_hero, container, false)
+    ): View {
+        binding = FragmentHeroBinding.inflate(inflater, container, false)
+        setViewContent()
+        return binding.root
+    }
 
-    private fun setViewContent(){
+    private fun setViewContent() {
+        selectedHero = args.selectedHero
         with(selectedHero) {
-            context?.let { Glide.with(it).load(this?.image?.url).into(binding.imageView) }
-            binding.selectedHeroName.text = this?.name
-            binding.selectedHeroCombat.text = this?.powerstats?.combat
-            binding.selectedHeroDurability.text = this?.powerstats?.durability
-            binding.selectedHeroIntelligence.text = this?.powerstats?.intelligence
-            binding.selectedHeroPower.text = this?.powerstats?.power
-            binding.selectedHeroSpeed.text = this?.powerstats?.speed
-            binding.selectedHeroStrength.text = this?.powerstats?.strength
-            binding.selectedHeroGender.text = this?.appearance?.gender
-            binding.selectedHeroRace.text = this?.appearance?.race
+            context?.let { Glide.with(it).load(image?.url).into(binding.imageView) }
+            binding.selectedHeroName.text = name
+            binding.selectedHeroCombat.text = powerstats?.combat
+            binding.selectedHeroDurability.text = powerstats?.durability
+            binding.selectedHeroIntelligence.text = powerstats?.intelligence
+            binding.selectedHeroPower.text = powerstats?.power
+            binding.selectedHeroSpeed.text = powerstats?.speed
+            binding.selectedHeroStrength.text = powerstats?.strength
+            binding.selectedHeroGender.text = appearance?.gender
+            binding.selectedHeroRace.text = appearance?.race
         }
     }
 }

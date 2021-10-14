@@ -1,14 +1,10 @@
 package com.example.pet_project.ui.main
 
-import android.os.Bundle
 import android.util.Log
-import android.widget.Toast
 import androidx.appcompat.widget.SearchView
-import androidx.navigation.fragment.NavHostFragment
 import com.arellomobile.mvp.InjectViewState
 import com.arellomobile.mvp.MvpPresenter
 import com.example.pet_project.BaseApp
-import com.example.pet_project.R
 import com.example.pet_project.model.hero.Result
 import com.example.pet_project.network.Interactor
 import io.reactivex.rxjava3.core.Observable
@@ -62,16 +58,7 @@ class MainPresenter : MvpPresenter<MainViewInterface>(), ClickListener {
     }
 
     override fun onItemClick(selectedHero: Result) {
-        val heroFragment = HeroFragment()
-        val bundle = Bundle()
-        viewState.openFragment()
-//        this logic has to be in activity. Presenter must not know anything about activity!!
-//        val navHostFragment =
-//            activity.supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
-//        val navController = navHostFragment.navController
-//        bundle.putParcelable("selectedHero", selectedHero)
-//        heroFragment.arguments = bundle
-//        navController.navigate(R.id.action_MainListFragment_to_HeroFragment)
+        viewState.openFragment(selectedHero)
     }
 
     override fun onDestroy() {
