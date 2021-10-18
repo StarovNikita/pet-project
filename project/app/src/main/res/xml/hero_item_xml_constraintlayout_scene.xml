@@ -33,7 +33,6 @@
             motion:layout_constraintEnd_toEndOf="parent"
             motion:layout_constraintBottom_toBottomOf="parent" />
         <Constraint
-            android:id="@+id/hero_name"
             motion:layout_constraintStart_toEndOf="@+id/hero_image"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -48,7 +47,6 @@
             motion:layout_constraintBottom_toBottomOf="parent"
             android:visibility="invisible" />
         <Constraint
-            android:id="@+id/hero_race"
             motion:layout_constraintEnd_toEndOf="parent"
             motion:layout_constraintStart_toEndOf="@+id/hero_gender"
             android:layout_width="wrap_content"

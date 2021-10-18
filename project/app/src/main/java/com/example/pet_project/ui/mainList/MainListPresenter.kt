@@ -1,4 +1,4 @@
-package com.example.pet_project.ui.main
+package com.example.pet_project.ui.mainList
 
 import android.util.Log
 import androidx.appcompat.widget.SearchView
@@ -13,7 +13,7 @@ import io.reactivex.rxjava3.subjects.PublishSubject
 import javax.inject.Inject
 
 @InjectViewState
-class MainPresenter : MvpPresenter<MainViewInterface>(), ClickListener {
+class MainListPresenter : MvpPresenter<MainListViewInterface>(), ClickListener {
 
     private val compositeDisposable = CompositeDisposable()
 

@@ -1,4 +1,4 @@
-package com.example.pet_project.ui.main
+package com.example.pet_project.ui.mainList
 
 import com.arellomobile.mvp.MvpView
 import com.arellomobile.mvp.viewstate.strategy.OneExecutionStateStrategy
@@ -7,7 +7,7 @@ import com.example.pet_project.model.hero.HeroResponse
 import com.example.pet_project.model.hero.Result
 
 @StateStrategyType(OneExecutionStateStrategy::class)
-interface MainViewInterface : MvpView {
+interface MainListViewInterface : MvpView {
 
     fun showHeroList(heroResponse: HeroResponse)
     fun openFragment(selectedHero: Result)

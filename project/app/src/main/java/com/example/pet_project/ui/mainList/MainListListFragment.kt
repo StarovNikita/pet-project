@@ -1,4 +1,4 @@
-package com.example.pet_project.ui.main
+package com.example.pet_project.ui.mainList
 
 import android.os.Bundle
 import android.util.Log
@@ -14,13 +14,13 @@ import com.example.pet_project.model.hero.HeroResponse
 import com.example.pet_project.model.hero.Result
 import com.example.pet_project.utils.navigate
 
-class MainListFragment : MvpAppCompatFragment(), MainViewInterface {
+class MainListListFragment : MvpAppCompatFragment(), MainListViewInterface {
 
     private lateinit var binding: FragmentMainListBinding
     private lateinit var adapter: HeroAdapter
 
     @InjectPresenter
-    lateinit var mainPresenter: MainPresenter
+    lateinit var mainListPresenter: MainListPresenter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -38,16 +38,16 @@ class MainListFragment : MvpAppCompatFragment(), MainViewInterface {
     }
 
     override fun openFragment(selectedHero: Result) {
-        val action = MainListFragmentDirections.actionMainListFragmentToHeroFragment(selectedHero)
+        val action = MainListListFragmentDirections.actionMainListFragmentToHeroFragment(selectedHero)
         navigate(action)
     }
 
     private fun initAllFields() {
-        mainPresenter.getHeroList()
-        mainPresenter.getHeroListBasedOnName(binding.searchView)
+        mainListPresenter.getHeroList()
+        mainListPresenter.getHeroListBasedOnName(binding.searchView)
         binding.heroList.setHasFixedSize(true)
         binding.heroList.layoutManager = LinearLayoutManager(context)
-        adapter = HeroAdapter(mainPresenter)
+        adapter = HeroAdapter(mainListPresenter)
         binding.heroList.adapter = adapter
     }
 }

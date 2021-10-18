@@ -1,4 +1,4 @@
-package com.example.pet_project.ui.main
+package com.example.pet_project.ui.mainList
 
 import com.example.pet_project.model.hero.Result
 

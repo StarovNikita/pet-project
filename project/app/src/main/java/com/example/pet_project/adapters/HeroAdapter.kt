@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.pet_project.databinding.HeroItemBinding
 import com.example.pet_project.model.hero.Result
-import com.example.pet_project.ui.main.ClickListener
+import com.example.pet_project.ui.mainList.ClickListener
 
 class HeroAdapter(
     private val itemClicked: ClickListener

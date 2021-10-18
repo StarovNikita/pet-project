@@ -2,12 +2,11 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/nav_graph"
     app:startDestination="@id/mainListFragment">
 
     <fragment
         android:id="@+id/mainListFragment"
-        android:name="com.example.pet_project.ui.main.MainListFragment"
+        android:name="com.example.pet_project.ui.mainList.MainListListFragment"
         android:label="fragment_main_list"
         tools:layout="@layout/fragment_main_list" >
         <action
@@ -16,7 +15,7 @@
     </fragment>
     <fragment
         android:id="@+id/heroFragment"
-        android:name="com.example.pet_project.ui.main.HeroFragment"
+        android:name="com.example.pet_project.ui.hero.HeroFragment"
         android:label="HeroFragment" >
         <argument
             android:name="selectedHero"
